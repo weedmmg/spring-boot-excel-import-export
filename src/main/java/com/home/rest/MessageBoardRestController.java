@@ -10,8 +10,10 @@ import com.home.entity.vo.MessageBoardVo;
 import io.swagger.annotations.*;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author ：chenxf
@@ -64,5 +66,11 @@ public class MessageBoardRestController extends BaseRestController<MessageBoardB
         return new TableResultResponse<MessageBoard>(Integer.parseInt(String.valueOf(pageInfo.getTotal())),
                 offset, limit,
                 items);
+    }
+
+    @ApiOperation(value = "上传图片", notes = "上传图片")
+    @PostMapping( "/upload")
+    public Map upload(@RequestParam("file") MultipartFile file) {
+        return baseBiz.upload(file);
     }
 }

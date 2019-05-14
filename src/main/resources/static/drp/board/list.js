@@ -2,7 +2,8 @@
 layui.config({
   base: '/' //假设这是你存放拓展模块的根目录
 }).extend({ //设定模块别名
-  murl: 'url'
+    murl: 'url',
+    excel: 'excel.min'
 });
 
 var apply = {
@@ -17,6 +18,10 @@ var apply = {
 apply.columns = function () {
     return [{
                     checkbox: true
+    },{
+        field: 'id',
+        title: '序号',
+        class: 'text-cxf'
     },{
         field: 'telphone',
         title: '手机号码',
@@ -36,7 +41,6 @@ apply.columns = function () {
 apply.queryParams = function (params) {
     if (!params)
         return {
-            beginTime: $("#beginTime").val(),
             orderStr: 'desc',
             telphone: $("#telphone").val(),
             status: $("#status").val()
@@ -92,31 +96,39 @@ apply.select = function (layerTips) {
     }
 };
 
-layui.use(['form', 'layedit', 'laydate'], function () {
+layui.use(['form', 'layedit','upload', 'excel','laydate'], function () {
     apply.init();
 
     var editIndex;
     var layerTips = parent.layer === undefined ? layui.layer : parent.layer, //获取父窗口的layer对象
         layer = layui.layer, //获取当前窗口的layer对象
-        layedit = layui.layedit,
+        layedit = layui.layedit,upload=layui.upload, excel = layui.excel,
         laydate = layui.laydate;
 
-     laydate.render({
-           elem: '#beginTime' //指定元素
-         });
-     laydate.render({
-        elem: '#endTime' //指定元素
-     });
+    var uploadInst = upload.render({
+        elem: '#uploadFile' //缁戝畾鍏冪礌
+        ,accept:'file'
+        ,exts:'xls|xlsx'
+        ,url: '/board/upload' //涓婁紶鎺ュ彛
+        ,type: 'post'
+        ,done: function(res){
+            layerTips.msg(res.msg);
+            apply.table.bootstrapTable('refresh', apply.queryParams());
+        }
+        ,error: function(){
+            //璇锋眰寮傚父鍥炶皟
+            layerTips.msg("上传失败");
+        }
+    });
     var addBoxIndex = -1;
     //初始化页面上面的按钮事件
     $('#btn_query').on('click', function () {
         apply.table.bootstrapTable('refresh', apply.queryParams());
     });
 
-    $('#btn_edit').on('click', function () {
-            if (apply.select(layer)) {
-                edit(apply.currentItem.id);
-            }
+    $('#btn_export').on('click', function () {
+             exportApiDemo();
+
 
        });
 
@@ -130,5 +142,49 @@ function edit(id){
     parent.tab.tabAdd({
         title: '咨询处理',
         href: ctxPath+'boardv/edit?id='+id
+    });
+}
+
+function exportApiDemo() {
+    var opthons=  apply.table.bootstrapTable('getOptions');
+    layui.use(['jquery', 'excel', 'layer'], function() {
+        var $ = layui.jquery;
+        var layer = layui.layer;
+        var excel = layui.excel;
+
+        // 模拟从后端接口读取需要导出的数据
+        $.ajax({
+            url:apply.baseUrl+"/list"
+                ,type: 'get'
+            ,data:apply.queryParams({offset:opthons.pageNumber,limit:opthons.pageSize})
+            ,dataType: 'json'
+            ,success: function(res) {
+                if(res.rel){
+                    var data = res.data;
+                    // 重点！！！如果后端给的数据顺序和映射关系不对，请执行梳理函数后导出
+                    data = excel.filterExportData(data, {
+                        id: 'id'
+                        ,telphone: 'telphone'
+                        ,message: 'message'
+
+                    });
+                    // 重点2！！！一般都需要加一个表头，表头的键名顺序需要与最终导出的数据一致
+                    data.unshift({ id: "编号", telphone: "手机号码", message: '咨询内容' });
+
+                    var timestart = Date.now();
+                    excel.exportExcel({
+                        sheet1: data
+                    }, '留言咨询.xlsx', 'xlsx');
+                    var timeend = Date.now();
+
+                    var spent = (timeend - timestart) / 1000;
+                    layer.alert('导出耗时 '+spent+' s 导出成功');
+                }
+
+            }
+            ,error: function() {
+                layer.alert('获取数据失败，请检查是否部署在本地服务器环境下');
+            }
+        });
     });
 }

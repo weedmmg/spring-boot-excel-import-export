@@ -13,13 +13,9 @@ spring:
         default-property-inclusion: non_null
     datasource:
         name: test
-        url: jdbc:mysql://118.190.216.66:34367/standard_home?serverTimezone=UTC&useUnicode=true&characterEncoding=UTF8
-        username: hjlotterymgr
-        password: '*6erBP000$v&)@,'
-#        url: jdbc:mysql://192.168.0.119:3306/standard_home?serverTimezone=UTC&useUnicode=true&characterEncoding=UTF8
-#        username: root
-#        password: 1130
-        # 使用druid数据源
+        url: jdbc:mysql://121.43.186.43:3306/cxf_excel?serverTimezone=UTC&useUnicode=true&characterEncoding=UTF8
+        username: cxfhrcf
+        password: '11300519'
         type: com.alibaba.druid.pool.DruidDataSource
         driver-class-name: com.mysql.cj.jdbc.Driver
         filters: stat
@@ -37,23 +33,14 @@ spring:
         maxOpenPreparedStatements: 20
 server:
     port: 8989
-    servlet:
-        context-path: /home
 
 swagger:
     basepackage: com.home.rest
     service:
-        name: standard_home
-        description: 火炬体育官网后台
+        name: cxf_excel
+        description: 一张虎
         developer: chenxf
 
-eureka:
-    instance:
-        statusPageUrlPath: /info
-        healthCheckUrlPath: /health
-    client:
-        serviceUrl:
-            defaultZone: http://localhost:58001/eureka/
 jwt:
   secret: CX*g@hjty
   expiration: 7200
