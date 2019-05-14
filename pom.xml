@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 	<groupId>com.home</groupId>
-	<artifactId>standard_home</artifactId>
+	<artifactId>boot_excel</artifactId>
 	<version>0.1.0</version>
 	<packaging>war</packaging>
     <parent>
@@ -148,10 +148,24 @@
             <artifactId>commons-lang3</artifactId>
             <version>3.3.2</version>
         </dependency>
+
+
+        <!-- excel -->
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi</artifactId>
+            <version>RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-ooxml</artifactId>
+            <version>RELEASE</version>
+        </dependency>
+
     </dependencies>
 
     <build>
-        <finalName>cxf-home</finalName>
+        <finalName>boot_excel</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
