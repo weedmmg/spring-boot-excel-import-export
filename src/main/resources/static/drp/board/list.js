@@ -156,11 +156,11 @@ function exportApiDemo() {
         $.ajax({
             url:apply.baseUrl+"/list"
                 ,type: 'get'
-            ,data:apply.queryParams({offset:opthons.pageNumber,limit:opthons.pageSize})
+            ,data:apply.queryParams({offset:opthons.pageNumber-1,limit:opthons.pageSize})
             ,dataType: 'json'
             ,success: function(res) {
-                if(res.rel){
-                    var data = res.data;
+                if(res.total){
+                    var data = res.rows;
                     // 重点！！！如果后端给的数据顺序和映射关系不对，请执行梳理函数后导出
                     data = excel.filterExportData(data, {
                         id: 'id'
@@ -178,7 +178,7 @@ function exportApiDemo() {
                     var timeend = Date.now();
 
                     var spent = (timeend - timestart) / 1000;
-                    layer.alert('导出耗时 '+spent+' s 导出成功');
+                    layer.alert(' 导出成功');
                 }
 
             }
