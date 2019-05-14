@@ -1,0 +1,74 @@
+logging:
+    level:
+        com.home: DEBUG
+spring:
+    application:
+        name: standard_home
+    thymeleaf:
+        mode: LEGACYHTML5
+        cache: false
+    jackson:
+        date-format: yyyy-MM-dd HH:mm:ss
+        time-zone: GMT+8
+        default-property-inclusion: non_null
+    datasource:
+        name: test
+        url: jdbc:mysql://118.190.216.66:34367/standard_home?serverTimezone=UTC&useUnicode=true&characterEncoding=UTF8
+        username: hjlotterymgr
+        password: '*6erBP000$v&)@,'
+#        url: jdbc:mysql://192.168.0.119:3306/standard_home?serverTimezone=UTC&useUnicode=true&characterEncoding=UTF8
+#        username: root
+#        password: 1130
+        # 使用druid数据源
+        type: com.alibaba.druid.pool.DruidDataSource
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        filters: stat
+        maxActive: 20
+        initialSize: 1
+        maxWait: 60000
+        minIdle: 1
+        timeBetweenEvictionRunsMillis: 60000
+        minEvictableIdleTimeMillis: 300000
+        validationQuery: select 'x'
+        testWhileIdle: true
+        testOnBorrow: false
+        testOnReturn: false
+        poolPreparedStatements: true
+        maxOpenPreparedStatements: 20
+server:
+    port: 8989
+    servlet:
+        context-path: /home
+
+swagger:
+    basepackage: com.home.rest
+    service:
+        name: standard_home
+        description: 火炬体育官网后台
+        developer: chenxf
+
+eureka:
+    instance:
+        statusPageUrlPath: /info
+        healthCheckUrlPath: /health
+    client:
+        serviceUrl:
+            defaultZone: http://localhost:58001/eureka/
+jwt:
+  secret: CX*g@hjty
+  expiration: 7200
+  header: access-token
+  tokenHead: token-header
+
+mapper:
+    mappers:
+        - tk.mybatis.mapper.common.Mapper
+    not-empty: false
+    identity: MYSQL
+
+
+auth:
+    jwt:
+        secret: Xe*g@1jda
+        expiration: 7200
+        header: access-token

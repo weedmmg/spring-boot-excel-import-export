@@ -1,0 +1,90 @@
+[
+	{
+		"title": "财务管理",
+		"icon": "fa-list",
+		"spread": true,
+		"children": [
+			{
+				"title": "钱包互转",
+				"icon": "fa-list",
+				"href": "button.html"
+			}, {
+				"title": "内部转账",
+				"icon": "fa-pencil-square",
+				"href": "form.html"
+			}, {
+				"title": "外部转账",
+				"icon": "fa-pencil-square",
+				"href": "form.html"
+			}, {
+				"title": "提现",
+				"icon": "fa-pencil-square",
+				"href": "form.html"
+			}, {
+				"title": "账变日志",
+				"icon": "fa-pencil-square",
+				"href": "form.html"
+			}
+		]
+	}, {
+		"title": "挖矿管理",
+		"icon": "fa-cubes",
+		"spread": false,
+		"children": [
+			{
+				"title": "购买矿工",
+				"icon": "fa-comments",
+				"href": "begtable.html"
+			}, {
+				"title": "挖矿日志",
+				"icon": "fa-navicon",
+				"href": "navbar.html"
+			}
+		]
+	}, {
+	"title": "推荐管理",
+	"icon": "fa-cloud-upload",
+	"href": "https://www.baidu.com",
+	"spread": false,
+	"children": [
+		{
+			"title": "推方码",
+			"icon": "fa-comments",
+			"href": "begtable.html"
+		}, {
+			"title": "注册会员",
+			"icon": "fa-navicon",
+			"href": "navbar.html"
+		}, {
+			"title": "下线会员",
+			"icon": "fa-navicon",
+			"href": "navbar.html"
+		}, {
+			"title": "动态奖励",
+			"icon": "fa-navicon",
+			"href": "navbar.html"
+		}
+	]
+}, {
+	"title": "个人中心",
+	"icon": "fa-gear",
+	"href": "https://www.baidu.com",
+	"spread": false,
+	"children": [
+		{
+			"title": "修改密码",
+			"icon": "fa-comments",
+			"href": "begtable.html"
+		}, {
+			"title": "资料修改",
+			"icon": "fa-navicon",
+			"href": "navbar.html"
+		}, {
+			"title": "消息提醒",
+			"icon": "fa-navicon",
+			"href": "navbar.html"
+		}
+	]
+}
+
+]

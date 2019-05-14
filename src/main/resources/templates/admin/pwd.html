@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html  xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+
+<head>
+  <meta charset="UTF-8">
+  <title>Table</title>
+  <link rel="stylesheet" href="css/bootstrap.min.css"/>
+  <link rel="stylesheet" href="plugins/bootstrap-table/css/bootstrap-table.min.css"/>
+  <link rel="stylesheet" href="css/layui.css" media="all"/>
+  <link rel="stylesheet" href="css/global.css" media="all">
+  <link rel="stylesheet" href="plugins/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="plugins/lightbox2/css/lightbox.min.css">
+  <link rel="stylesheet" href="css/common.css" media="all"/>
+  <style>
+		.cus-layui-form-label{
+		 text-align:left;
+    	display: block;
+   	 padding: 9px 15px;
+    	font-weight: 400;
+    	/*background-color: #d2d2d2;*/
+    }
+
+    .cus-layui-div img {
+    margin-left: auto;
+    margin-right:auto;
+    display:block;
+    }
+	</style>
+</head>
+<body class="page-content">
+
+<form class="layui-form" action="">
+
+  <!-- BEGIN MAIN CONTENT -->
+  <div class="row" >
+    <div class="col-md-12">
+      <!-- BEGIN EXAMPLE TABLE PORTLET-->
+      <div class="portlet light bordered" id="blockui_equity_portlet_body">
+        <div class="caption font-dark">
+          <i class="fa fa-calendar-check-o font-dark"></i>
+          <span class="caption-subject uppercase">登陆密码</span>
+        </div>
+        <div class="portlet-body">
+          <div class="row">
+            <div class="col-sm-2">
+              <label class="cus-layui-form-label" >旧密码:</label>
+            </div>
+            <div class="col-sm-10">
+              <input type="password" name="oldPassword"  placeholder="请输入旧密码"  id="l_oldPassword" class="layui-input" />
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-2">
+              <label class="cus-layui-form-label" >新密码:</label>
+            </div>
+            <div class="col-sm-10">
+              <input type="password"  placeholder="请输入新密码"  id="l_newPassword" class="layui-input" />
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-2">
+              <label class="cus-layui-form-label" >确认密码:</label>
+            </div>
+            <div class="col-sm-10">
+              <input type="password"  placeholder="请输入确认密码"  id="l_password" class="layui-input" />
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-2">
+            </div>
+            <div class="col-sm-10">
+              <div class="btn green btn-outline" lay-filter="lsave"  lay-submit><span>确认修改</span></div>
+            </div>
+          </div>
+      </div>
+
+
+      </div>
+      <!-- END EXAMPLE TABLE PORTLET-->
+    </div>
+  </div>
+
+
+</form>
+<script type="text/javascript" src="plugins/jquery.min.js"></script>
+<script type="text/javascript" src="bootstrap.min.js"></script>
+<script type="text/javascript" src="plugins/bootstrap-table/bootstrap-table.min.js"></script>
+<script type="text/javascript" src="plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+<script type="text/javascript" src="plugins/lightbox2/js/lightbox.js"></script>
+
+<script type="text/javascript" src="layui.all.js"></script>
+<script type="text/javascript" src="drp/pwd.js"></script>
+</body>
+
+</html>

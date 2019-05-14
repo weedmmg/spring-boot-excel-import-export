@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html  xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Table</title>
+	<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+	<link rel="stylesheet" th:href="@{/plugins/bootstrap-table/css/bootstrap-table.min.css}"/>
+	<link rel="stylesheet" th:href="@{/css/layui.css}" media="all"/>
+	<link rel="stylesheet"th:href="@{/css/global.css}" media="all">
+	<link rel="stylesheet" th:href="@{/plugins/font-awesome/css/font-awesome.min.css}">
+	<link rel="stylesheet" th:href="@{/plugins/lightbox2/css/lightbox.min.css}">
+	<link rel="stylesheet" th:href="@{/css/common.css}" media="all"/>
+	<style>
+		.cus-layui-form-label{
+		 text-align:left;
+    	display: block;
+   	 padding: 9px 15px;
+    	font-weight: 400;
+    	/*background-color: #d2d2d2;*/
+    }
+
+    .cus-layui-div img {
+    margin-left: auto;
+    margin-right:auto;
+    display:block;
+    }
+	</style>
+</head>
+<body class="page-content">
+
+<form class="layui-form" action="">
+
+	<!-- BEGIN MAIN CONTENT -->
+	<div class="row" >
+		<div class="col-md-12">
+			<!-- BEGIN EXAMPLE TABLE PORTLET-->
+			<div class="portlet light bordered" id="blockui_equity_portlet_body">
+
+
+			</div>
+			<!-- END EXAMPLE TABLE PORTLET-->
+		</div>
+	</div>
+
+</form>
+<script type="text/javascript" th:src="@{/jquery.min.js}"></script>
+<script type="text/javascript" th:src="@{/bootstrap.min.js}"></script>
+<script type="text/javascript"th:src="@{/layui.all.js}"></script>
+</body>
+
+</html>

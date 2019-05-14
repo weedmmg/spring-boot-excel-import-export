@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+  <!--<properties resource="dev.properties"/>-->
+
+  <context id="Mysql" targetRuntime="MyBatis3Simple" defaultModelType="flat">
+    <property name="beginningDelimiter" value="`"/>
+    <property name="endingDelimiter" value="`"/>
+    <property name="mergeable" value="false"></property>
+    <plugin type="tk.mybatis.mapper.generator.MapperPlugin">
+      <property name="mappers" value="tk.mybatis.mapper.common.Mapper"/>
+    </plugin>
+
+    <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
+      connectionURL="jdbc:mysql://localhost:3306/standard_home?serverTimezone=GMT&amp;useUnicode=true&amp;characterEncoding=UTF8"
+      userId="root"
+      password="1130">
+    </jdbcConnection>
+
+    <javaModelGenerator targetPackage="${targetModelPackage}" targetProject="${targetJavaProject}"/>
+
+    <sqlMapGenerator targetPackage="${targetXMLPackage}" targetProject="${targetResourcesProject}"/>
+
+    <javaClientGenerator targetPackage="${targetMapperPackage}" targetProject="${targetJavaProject}"
+      type="XMLMAPPER"/>
+       <table tableName="cxf_user" domainObjectName="HomeUser">
+
+      </table>
+      <table tableName="base_menu" domainObjectName="HomeMenu">
+
+      </table>
+      <table tableName="cxf_message_board" domainObjectName="MessageBoard">
+
+      </table>
+
+    <!--<table tableName="cxf_pay_app" domainObjectName="PayApp">-->
+
+    <!--</table>-->
+  </context>
+</generatorConfiguration>

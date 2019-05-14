@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html  xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Table</title>
+	<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+	<link rel="stylesheet" th:href="@{/plugins/bootstrap-table/css/bootstrap-table.min.css}"/>
+	<link rel="stylesheet" th:href="@{/css/layui.css}" media="all"/>
+	<link rel="stylesheet"th:href="@{/css/global.css}" media="all">
+	<link rel="stylesheet" th:href="@{/plugins/font-awesome/css/font-awesome.min.css}">
+	<link rel="stylesheet" th:href="@{/plugins/lightbox2/css/lightbox.min.css}">
+	<link rel="stylesheet" th:href="@{/css/common.css}" media="all"/>
+	<style>
+		.cus-layui-form-label{
+			text-align:left;
+			display: block;
+			padding: 9px 15px;
+			font-weight: 400;
+			/*background-color: #d2d2d2;*/
+		}
+
+		.cus-layui-div img {
+			margin-left: auto;
+			margin-right:auto;
+			display:block;
+		}
+	</style>
+</head>
+<body class="page-content">
+
+<form class="layui-form" id="form1" action="">
+
+	<!-- BEGIN MAIN CONTENT -->
+	<div class="row" >
+		<div class="col-md-12">
+			<!-- BEGIN EXAMPLE TABLE PORTLET-->
+			<div class="portlet light bordered" id="blockui_equity_portlet_body">
+				<div class="portlet-body">
+					<div class="row">
+						<div class="col-sm-4">
+							<label class="cus-layui-form-label">手机号</label>
+						</div>
+						<div class="col-sm-8">
+							<label class="cus-layui-form-label" id="telphone"></label>
+							<input type="hidden" id="id" name="id"/>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-4">
+							<label class="cus-layui-form-label">咨询内容</label>
+						</div>
+						<div class="col-sm-8">
+							<pre id="message"></pre>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-4">
+							<label class="cus-layui-form-label">处理状态</label>
+						</div>
+						<div class="col-sm-8" >
+							<select name="status" >
+								<option th:each="state : ${T(com.home.enums.BoardEnums).values()}" th:value="${state.key}" th:text="${state.desc}"></option>
+							</select>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-4">
+							<label class="cus-layui-form-label">处理意见</label>
+						</div>
+						<div class="col-sm-8">
+							<textarea name="reply" id="reply" style="width: 100%;height: 150px;"></textarea>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-4">
+						</div>
+						<div class="col-sm-8">
+							<div class="btn green btn-outline" lay-filter="save"  lay-submit><span>处理</span></div>
+							<div class="btn green btn-outline" lay-filter="cancel"  lay-submit><span>取消</span></div>
+						</div>
+					</div>
+					<!-- END EXAMPLE TABLE PORTLET-->
+				</div>
+
+			</div>
+			<!-- END EXAMPLE TABLE PORTLET-->
+		</div>
+	</div>
+
+</form>
+<script  th:inline="javascript">
+	/*<![CDATA[*/
+	ctxPath = /*[[@{/}]]*/ '';
+	/*]]>*/
+
+	console.info(ctxPath);
+</script>　
+<script type="text/javascript" th:src="@{/jquery.min.js}"></script>
+<script type="text/javascript" th:src="@{/bootstrap.min.js}"></script>
+<script type="text/javascript"th:src="@{/layui.all.js}"></script>
+<script type="text/javascript"th:src="@{/drp/board/edit.js}"></script>
+</body>
+
+</html>
